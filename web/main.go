@@ -5,3 +5,4 @@ type Server struct{
 	dbClient *db.Client
 	tables GlobalTables
 }
+
