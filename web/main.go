@@ -9,14 +9,15 @@ func index_handler(w http.ResponseWriter, r *http.Request){
 }
 
 func about_handler(w http.ResponseWriter, r* http.Request){
-	fmt.Fprintf(w, `
-	<h1>About Golang</h1>
-	<p>Golang is an open source programming language which allows you to build simple, reliable, and efficient applications.</p>
-	`)
+	// fmt.Fprintf(w, `
+	// <h1>About Golang</h1>
+	// <p>Golang is an open source programming language which allows you to build simple, reliable, and efficient applications.</p>
+	// `)
+	// http.FileServer(http.Dir("./front-end"))
 }
 
 func main(){
 	http.HandleFunc("/", index_handler)
-	http.HandleFunc("/about", about_handler)
+	http.Handle("/about", http.FileServer(http.Dir("./front-end")))
 	http.ListenAndServe(":8000", nil)
 }
