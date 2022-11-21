@@ -1,18 +1,22 @@
 package main
 
-type Server struct{
-	router *gin.Engine
-	dbClient *db.Client
-	tables GlobalTables
+import ("fmt"
+	"net/http")
+
+func index_handler(w http.ResponseWriter, r *http.Request){
+	fmt.Fprintf(w, "<h1>Go world !</h1>")
+	fmt.Fprintf(w, "<p>Golang is a wonderful language</p>")
 }
 
-func (s *Server) NewRouter() *gin.Engine{
-	router := gin.Default()
-	router.Use(cors.New(cors.Config{
-		AllowMethods:     []string{"GET", "POST", "PUT", "HEAD"},
-		AllowHeaders:     []string{"Origin", "Content-Length", "Content-Type", middleware.TokenHeader},
-		AllowCredentials: false,
-		AllowAllOrigins:  true,
-		MaxAge:           12 * time.Hour,
-	}))
+func about_handler(w http.ResponseWriter, r* http.Request){
+	fmt.Fprintf(w, `
+	<h1>About Golang</h1>
+	<p>Golang is an open source programming language which allows you to build simple, reliable, and efficient applications.</p>
+	`)
+}
+
+func main(){
+	http.HandleFunc("/", index_handler)
+	http.HandleFunc("/about", about_handler)
+	http.ListenAndServe(":8000", nil)
 }
