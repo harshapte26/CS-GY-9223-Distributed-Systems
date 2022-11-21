@@ -17,7 +17,7 @@ func about_handler(w http.ResponseWriter, r* http.Request){
 }
 
 func main(){
-	http.HandleFunc("/", index_handler)
-	http.Handle("/about", http.FileServer(http.Dir("./front-end")))
+	// http.HandleFunc("/", index_handler)
+	http.Handle("/", http.FileServer(http.Dir("./front-end")))
 	http.ListenAndServe(":8000", nil)
 }

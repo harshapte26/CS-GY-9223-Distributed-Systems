@@ -8,7 +8,7 @@ ul, li {
 }
 
 body {
-	background: #d83d3d;
+	background: #83d6f0;
 }
 
 .main-nav {
@@ -224,7 +224,7 @@ body {
 .form input[type=submit] {
   padding: 16px 0;
   cursor: pointer;
-  background: #F64747;
+  background: #6bb8e4;
   color: #FFF;
   font-weight: bold;
   border: none;
