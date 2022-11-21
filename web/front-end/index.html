@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Distributer</title>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
@@ -13,10 +13,11 @@
 
                 <div>
                     <span class="count">140</span>
-                    <button>Post</button>
+                    <button>Send</button>
                 </div>
             </form>
         </header>
+        <button id="follow-button" onclick="fun()">+ Follow</button>
 
         <div class="tweets">
             <div class="thread">
@@ -41,7 +42,7 @@
     <!-- Handlebars Templates -->
     <script id="template-tweet" type="text/x-handlebars-template">
         <div class="tweet">
-            <img src="./images/{{ img }}">
+            <img src="images/{{ img }}">
 
             <div class="body">
                 <div class="title">{{ handle }}</div>
@@ -57,7 +58,7 @@
 
                 <div>
                     <span class="count">140</span>
-                    <button>Post</button>
+                    <button>Send</button>
                 </div>
             </form>
         </div>
@@ -68,11 +69,10 @@
             {{{ tweetTemplate }}}
             {{{ composeTemplate }}}
         </div>
-        <button id="follow-button" onclick="fun()">+ Follow</button>
     </script>
 
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
-    <script src="./main.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>
