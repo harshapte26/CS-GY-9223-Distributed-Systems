@@ -18,7 +18,7 @@ function fun(){
         // $("#follow-button").css("border-color", "#3399FF");
     }
 }
-$( function() {
+$(function() {
 
 
     /*--------------------------------------
