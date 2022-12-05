@@ -18,9 +18,18 @@ func about_handler(w http.ResponseWriter, r *http.Request) {
 	// http.FileServer(http.Dir("./front-end"))
 }
 
+// func main() {
+// 	http.HandleFunc("/", index_handler)
+// 	// http.Handle("/", http.FileServer(http.Dir("./front-end")))
+// 	// http.Handle("/signup", http.FileServer(http.Dir("./front-end/signup")))
+// 	http.ListenAndServe(":8000", nil)
+// }
+
 func main() {
-	http.HandleFunc("/", index_handler)
-	// http.Handle("/", http.FileServer(http.Dir("./front-end")))
-	// http.Handle("/signup", http.FileServer(http.Dir("./front-end/signup")))
-	http.ListenAndServe(":8000", nil)
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", home)
+	mux.HandleFunc("/about", about)
+	port := ":9000"
+	log.Println("Listening on port ", port)
+	http.ListenAndServe(port, mux)
 }
