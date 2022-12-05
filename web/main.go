@@ -20,6 +20,7 @@ func about_handler(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	// http.HandleFunc("/", index_handler)
-	http.Handle("/", http.FileServer(http.Dir("./front-end/signup.html")))
+	http.Handle("/", http.FileServer(http.Dir("./front-end")))
+	http.Handle("/signup", )
 	http.ListenAndServe(":8000", nil)
 }
