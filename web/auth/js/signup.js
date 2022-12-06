@@ -21,26 +21,28 @@ function registerUser() {
       toastr.error("Please enter Password!")
       return
   }
+
   console.log("Entered")
+  window.alert("sometext");
   var registerData = {
       "firstName": firstName,
       "lastName": lastName,
       "email": email,
       "password": password
   }
-  $.ajax({
-      url: "http://localhost:8000/register/",
-      method: "POST",
-      data: JSON.stringify(registerData),
-      dataType: 'json',
-      contentType: "application/json",
-      success: function (data) {
-          if (data.Status == 200) {
-              toastr.success(data.Message);
-          } else {
-              toastr.error(data.Message)
-          }
+//   $.ajax({
+//       url: "http://localhost:8000/register/",
+//       method: "POST",
+//       data: JSON.stringify(registerData),
+//       dataType: 'json',
+//       contentType: "application/json",
+//       success: function (data) {
+//           if (data.Status == 200) {
+//               toastr.success(data.Message);
+//           } else {
+//               toastr.error(data.Message)
+//           }
 
-      },
-  });
+//       },
+//   });
 }
