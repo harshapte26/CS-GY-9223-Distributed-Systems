@@ -21,7 +21,7 @@ function registerUser() {
       toastr.error("Please enter Password!")
       return
   }
-
+  console.log("Entered")
   var registerData = {
       "firstName": firstName,
       "lastName": lastName,
