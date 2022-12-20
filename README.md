@@ -1,14 +1,49 @@
-# Distributed Finaly Project Course Materials
+# Distributed Systems Project
+Authors:
+Harsh Apte (ha2179)
+Manan Chawda (mrc9419)
+Note: Open the src folder as the root of the project
 
-## Protobuf Generator
 
-Put this shell script in the root of every project I make that generates code from protobuf files.
+A. Raft Setup on Local:
 
-It scans the caller's directory for folders ending in `pb`, and generates the protobufs therein.
+1. Clone CoreOS raft into local package
+cd src/github.com
+mkdir go.etcd.io
+cd go.etcd.io
+git clone https://github.com/etcd-io/etcd.git
 
-It's only been tested on mac, but it should work on any nixy system.  The only non-standard tool it uses is `tree`, and that's nonessential.  If you want it anyway, ond you're on n a mac, do `brew install tree`.
+2. Package Resolution from Module Graph of Go
+go mod tidy
 
-Obviously, this script also requires protobufs, grpc, and the go-bindings thereof.  For installation instructions there, I'll defer to [this page](https://grpc.io/docs/quickstart/go.html).
+3. Install goreman
+cd github.com/go.etcd.io/etcd/contrib/raftexample
+go get github.com/mattn/goreman
 
-If you're able to drop this gen proto script into the root of the example directory they provide, rename `helloworld` to `helloworldpb`, and the script executes without complain, then you're probably good to use this everywhere!
+4. Build raft Example
+go build -o raftexample
 
+4. Run goreman
+goreman start
+
+B. Run Local Services
+
+1. Run TokenActionService
+cd web/services/tokenActions/tokenActions_service
+go run tokenActionService.go
+
+2. Run UserService
+cd web/services/user/user_service
+go run userService.go
+
+3. Run Post Service
+cd web/services/post/post_service
+go run postService.go
+
+4. Run UI(Web) Service
+cd cmd/web
+go run web.go
+
+Verify the application is running on : http://localhost:8000/login/
+
+C. Run the test cases by running the following (as one command): go run mainTest.go registerLoginTest.go followUnfollowTest.go postTest.go
